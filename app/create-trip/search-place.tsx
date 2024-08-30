@@ -1,14 +1,21 @@
 import { View, Text, TextInput, TouchableOpacity, ToastAndroid } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigation, useRouter } from 'expo-router'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { CreateTripContext } from '@/context/MytripContext';
 
 export default function SearchPlace() {
+    const { tripData, setTripData } = useContext < any > (CreateTripContext)
     const [text, setText] = useState < string > (" ");
     const router = useRouter();
+    useEffect(() => {
+        console.log(tripData)
+    }, [tripData])
+
     const handleOnpress = () => {
         if (text != "") {
-            console.log(text)
+            // console.log(tripData)
+            setTripData({ place: text })
             router.push('/create-trip/select-traveller')
         }
         else {
@@ -26,6 +33,7 @@ export default function SearchPlace() {
             }
         )
     }, [])
+
     return (
         <View className="h-full bg-white items-center">
             <View className="p-10 mt-[80px] ">

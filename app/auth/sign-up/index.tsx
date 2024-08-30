@@ -9,11 +9,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigation, useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./../../../config/FirebaseConfig";
+import { auth } from "../../../config/FirebaseConfig";
 export default function Login() {
   const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [fullName, setFullName] = useState();
+  const [password, setPassword] = useState < any > (null);
+  const [fullName, setFullName] = useState < any > (null);
 
   const navigation = useNavigation();
   const router = useRouter();

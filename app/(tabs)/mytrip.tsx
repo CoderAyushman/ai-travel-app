@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import StartNewTripCard from "../../components/MyTrips/StartNewTripCard";
 export default function MyTrip() {
-  const [userTrips, setUserTrips] = useState([]);
+  const [userTrips, setUserTrips] = useState < any > ([]);
   return (
     <View className="p-5 pt-[50px] h-[100vh] bg-white">
       <View className="flex-row justify-between items-center">

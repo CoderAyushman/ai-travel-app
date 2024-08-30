@@ -1,8 +1,11 @@
+'use client'
+import { CreateTripContext } from "@/context/MytripContext";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 export default function RootLayout() {
+  const [tripData, setTripData] = useState([])
   const [fontsLoaded] = useFonts({
     outfit: require("./../assets/fonts/Outfit-Regular.ttf"),
     "outfit-medium": require("./../assets/fonts/Outfit-Medium.ttf"),
@@ -27,10 +30,13 @@ export default function RootLayout() {
     return null; // Don't render anything until fonts are loaded
   }
   return (
-    <Stack screenOptions={{
-      headerShown: false
-    }}>
-      <Stack.Screen name="(tabs)" />
-    </Stack>
+    <CreateTripContext.Provider value={{ tripData, setTripData }}>
+
+      <Stack screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name="(tabs)" />
+      </Stack>
+    </CreateTripContext.Provider>
   );
 }
