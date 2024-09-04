@@ -73,7 +73,7 @@ export default function Signin() {
         <Text style={{ fontFamily: "outfit" }}>Email</Text>
         <TextInput
           style={{ fontFamily: "outfit" }}
-          type="email"
+
           placeholder="Enter Email"
           onChangeText={(value) => setEmail(value)}
           className="border border-gray-400 p-3 rounded-xl"
@@ -103,7 +103,7 @@ export default function Signin() {
       <TouchableOpacity
         className="border rounded-xl p-2 mt-5 "
         onPress={() => {
-          router.push("auth/sign-up");
+          router.push("/auth/sign-up");
         }}
       >
         <Text

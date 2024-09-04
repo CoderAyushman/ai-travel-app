@@ -2,21 +2,21 @@
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigation, useRouter } from 'expo-router';
-import { SelectTravelsList } from '@/constants/Option';
+import { BudgetList } from '@/constants/Option';
 import OptionCard from '@/components/MyTrips/OptionCard';
 import { CreateTripContext } from '@/context/MytripContext';
 
 
-const Traveller = () => {
-    const [selectedTraveller, setSelectedTraveller] = useState()
+const SelectBudget = () => {
+    const [selectedBudget, setSelectedBudget] = useState()
     const { tripData, setTripData } = useContext(CreateTripContext)
     const navigation = useNavigation();
     const router = useRouter();
     useEffect(() => {
-        setTripData({ ...tripData, travellerCount: selectedTraveller })
-    }, [selectedTraveller])
+        setTripData({ ...tripData, travellerBudget: selectedBudget })
+    }, [selectedBudget])
     useEffect(() => {
-        console.log(SelectTravelsList)
+        console.log(BudgetList)
         navigation.setOptions({
             headerShown: true,
             headerTransparent: true,
@@ -27,24 +27,24 @@ const Traveller = () => {
 
     const handleOnPress = (value) => {
 
-        setSelectedTraveller(value)
+        setSelectedBudget(value)
         setTimeout(() => {
-            router.push('/create-trip/selected-dates')
+            router.push('/create-trip/review-trip')
         }, 200);
     }
     return (
         <View className="h-full bg-white ">
             <View className='mt-[100px] px-5 '>
 
-                <Text style={{ fontFamily: 'outfit-bold' }} className='text-4xl'>Who's Travelling</Text>
-                <Text style={{ fontFamily: 'outfit-medium' }} className='text-2xl mt-5'>Choose your traveles</Text>
-                {SelectTravelsList && (
+                <Text style={{ fontFamily: 'outfit-bold' }} className='text-4xl'>Budget</Text>
+                <Text style={{ fontFamily: 'outfit-bold' }} className='text-lg my-5'>Choose spending habits for your trip</Text>
+                {BudgetList && (
                     <FlatList
-                        data={SelectTravelsList}
+                        data={BudgetList}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => handleOnPress(item.people)}>
-                                <OptionCard option={item} selectedTraveller={item.id} />
+                            <TouchableOpacity onPress={() => handleOnPress(item.title)}>
+                                <OptionCard option={item} selectedTraveller={selectedBudget} />
                             </TouchableOpacity>
                         )}
                     />
@@ -54,4 +54,4 @@ const Traveller = () => {
     )
 }
 
-export default Traveller
+export default SelectBudget

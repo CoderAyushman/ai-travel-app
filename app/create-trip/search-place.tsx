@@ -8,21 +8,12 @@ export default function SearchPlace() {
     const { tripData, setTripData } = useContext < any > (CreateTripContext)
     const [text, setText] = useState < string > (" ");
     const router = useRouter();
+    const navigation = useNavigation()
+
     useEffect(() => {
         console.log(tripData)
     }, [tripData])
 
-    const handleOnpress = () => {
-        if (text != "") {
-            // console.log(tripData)
-            setTripData({ place: text })
-            router.push('/create-trip/select-traveller')
-        }
-        else {
-            ToastAndroid.show("Please enter a valid location", ToastAndroid.LONG)
-        }
-    }
-    const navigation = useNavigation()
     useEffect(() => {
         navigation.setOptions(
             {
@@ -33,6 +24,16 @@ export default function SearchPlace() {
             }
         )
     }, [])
+    const handleOnpress = () => {
+        if (text != "") {
+            // console.log(tripData)
+            setTripData({ place: text })
+            router.push('/create-trip/select-traveller')
+        }
+        else {
+            ToastAndroid.show("Please enter a valid location", ToastAndroid.LONG)
+        }
+    }
 
     return (
         <View className="h-full bg-white items-center">
