@@ -9,6 +9,7 @@ import { CreateTripContext } from '@/context/MytripContext';
 
 const SelectBudget = () => {
     const [selectedBudget, setSelectedBudget] = useState()
+    const [selectedId, setSelectedId] = useState()
     const { tripData, setTripData } = useContext(CreateTripContext)
     const navigation = useNavigation();
     const router = useRouter();
@@ -27,7 +28,8 @@ const SelectBudget = () => {
 
     const handleOnPress = (value) => {
 
-        setSelectedBudget(value)
+        setSelectedBudget(value.title)
+        setSelectedId(value.id)
         setTimeout(() => {
             router.push('/create-trip/review-trip')
         }, 200);
@@ -43,8 +45,8 @@ const SelectBudget = () => {
                         data={BudgetList}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => handleOnPress(item.title)}>
-                                <OptionCard option={item} selectedTraveller={selectedBudget} />
+                            <TouchableOpacity onPress={() => handleOnPress(item)}>
+                                <OptionCard option={item} selectedTraveller={selectedId} />
                             </TouchableOpacity>
                         )}
                     />

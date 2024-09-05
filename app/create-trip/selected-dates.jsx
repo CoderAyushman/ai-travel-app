@@ -36,7 +36,7 @@ const SelectDates = () => {
 
     }
     const handleOnPress = () => {
-        if (!startDate && !endDate) {
+        if (!startDate || !endDate) {
             ToastAndroid.show("Please select Start Date and End Date", ToastAndroid.LONG);
 
         }
