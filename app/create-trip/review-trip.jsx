@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useContext, useEffect } from 'react'
-import { useNavigation } from 'expo-router'
+import { useNavigation, useRouter } from 'expo-router'
 import { CreateTripContext } from './../../context/MytripContext';
 import moment from 'moment';
 
@@ -8,6 +8,7 @@ import moment from 'moment';
 const ReviewTrip = () => {
     const { tripData } = useContext(CreateTripContext)
     const navigation = useNavigation()
+    const router = useRouter()
     useEffect(() => {
         navigation.setOptions({
             headerShown: true,
@@ -16,6 +17,7 @@ const ReviewTrip = () => {
         })
     }, [])
     const handleOnPress = () => {
+        router.push('/create-trip/generate-trip')
         console.log('hello')
     }
     return (
@@ -23,7 +25,7 @@ const ReviewTrip = () => {
             <View className='mt-[100px] px-5'>
                 <Text style={{ fontFamily: 'outfit-bold' }} className='text-4xl'>Review your trip</Text>
                 <Text style={{ fontFamily: 'outfit-bold' }} className='text-lg my-2 '>Before generating your trip , please review your selection</Text>
-                <View>
+                <View className='my-5'>
                     <View className='flex-row items-center gap-2 mt-1'>
                         <Text className='text-3xl p-2'>📍</Text>
                         <View>
@@ -35,7 +37,7 @@ const ReviewTrip = () => {
                         <Text className='text-3xl p-2'>📆</Text>
                         <View>
                             <Text style={{ fontFamily: 'outfit-medium' }} className='text-xl text-gray-400'>Travel Date</Text>
-                            <Text style={{ fontFamily: 'outfit-medium' }} className='text-xl '>{moment(tripData?.startDate).format('DD MMM') + " To " + moment(tripData?.endDate).format('DD MMM')} ({tripData?.totalNoOfDate} days)</Text>
+                            <Text style={{ fontFamily: 'outfit-medium' }} className='text-xl '>{moment(tripData?.startDate).format('DD MMM') + " To " + moment(tripData?.endDate).format('DD MMM')} ({tripData?.totalNoOfDays} days)</Text>
                         </View>
                     </View>
                     <View className='flex-row items-center gap-2 mt-1'>
