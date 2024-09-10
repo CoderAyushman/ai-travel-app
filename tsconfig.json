@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/(tabs)/mytrip.js", "config/FirebaseConfig.js", "app/create-trip/select-traveller.jsx", "context/MytripContext.js", "app/_layout.jsx", "app/_layout.jsx", "components/MyTrips/OptionCard.jsx", "app/(tabs)/mytrip.jsx"  ]
+, "app/(tabs)/mytrip.js", "config/FirebaseConfig.js", "app/create-trip/select-traveller.jsx", "context/MytripContext.js", "app/_layout.jsx", "app/_layout.jsx", "components/MyTrips/OptionCard.jsx", "app/(tabs)/mytrip.jsx", "components/MyTrips/UserTripList.jsx"  ]
 }

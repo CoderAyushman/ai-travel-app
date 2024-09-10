@@ -11,11 +11,12 @@ const Traveller = () => {
     const [selectedTraveller, setSelectedTraveller] = useState()
     const [selectedWhoTravel, setSelectedWhoTravel] = useState()
     const [selectedId, setSelectedId] = useState()
+    const [icon, seticon] = useState()
     const { tripData, setTripData } = useContext(CreateTripContext)
     const navigation = useNavigation();
     const router = useRouter();
     useEffect(() => {
-        setTripData({ ...tripData, travellerCount: selectedTraveller, whoTravel: selectedWhoTravel })
+        setTripData({ ...tripData, travellerCount: selectedTraveller, whoTravel: selectedWhoTravel, icon: icon })
     }, [selectedTraveller])
     useEffect(() => {
         console.log(SelectTravelsList)
@@ -32,6 +33,7 @@ const Traveller = () => {
         setSelectedTraveller(value.people)
         setSelectedId(value.id)
         setSelectedWhoTravel(value.title)
+        seticon(value.icon)
         setTimeout(() => {
             router.push('/create-trip/selected-dates')
         }, 200);
